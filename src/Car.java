@@ -1,10 +1,6 @@
-class Car {
-    final private String brand;
-    final private String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    final private int year;
-    final private String country;
+
     private String transmission;
     final private String bodyType;
     private String registrationNumber;
@@ -15,7 +11,7 @@ class Car {
         private boolean remoteEngineStart;
         private boolean keylessAccess;
 
-        public Key(boolean remoteEngineStart, boolean keylessAccess){
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
             if (remoteEngineStart != true || remoteEngineStart != false)
                 System.out.printf("Set correct remote Engine Start");
             else
@@ -25,34 +21,15 @@ class Car {
             else
                 this.keylessAccess = keylessAccess;
         }
-
     }
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean tires) {
+
+    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean tires, int maxSpeed) {
+        super(brand, model, year, country, color, maxSpeed);
         if (engineVolume <= 0)
             this.engineVolume = 1.5;
         else
             this.engineVolume = engineVolume;
-        if (year <= 0)
-            this.year = 2000;
-        else
-            this.year = year;
-        if (brand == null || brand.length() == 0)
-            this.brand = "default";
-        else
-            this.brand = brand;
-        if (model == null || model.length() == 0)
-            this.model = "default";
-        else
-            this.model = model;
-        if (country == null || country.length() == 0)
-            this.country = "default";
-        else
-            this.country = country;
-        if (color == null || color.length() == 0)
-            this.color = "белый";
-        else
-            this.color = color;
         if (transmission == null || transmission.length() == 0)
             this.transmission = "default";
         else
@@ -75,13 +52,6 @@ class Car {
             this.tires = tires;
     }
 
-    public String getBrand(){
-        return this.brand;
-    }
-    public String getModel(){
-        return this.model;
-    }
-
     public double getEngineVolume(){
         return this.engineVolume;
     }
@@ -89,18 +59,7 @@ class Car {
     public void setEngineVolume(double engineVolume){
         this.engineVolume = engineVolume;
     }
-    public String getColor(){
-        return this.color;
-    }
-    public void setColor(String color){
-        this.color = color;
-    }
-    public int getYear(){
-        return this.year;
-    }
-    public String getCountry(){
-        return this.country;
-    }
+
 
     public String getTransmission(){
         return this.transmission;
@@ -129,13 +88,14 @@ class Car {
     public void changeTires(boolean tires){
         this.tires = tires;
     }
+    @Override
     public String toString() {
         String type;
         if (this.tires == false)
         type = "зимняя";
                 else
         type = "летняя";
-        return ("Информация о машине: бренд " + this.brand + ", модель " + this.model + ", объем двигателя " + this.engineVolume + ", цвет  " + this.color+ ", год выпуска: " + this.year + ", страна производства: " + this.country + " коробка передач: " + this.transmission + "тип кузова: " + this.bodyType + "регистрационный номер: " + this.registrationNumber + "количество мест: " + this.numberOfSeats + "резина: " + type);
+        return ("Информация о машине: бренд " + this.getBrand() + ", модель " + this.getModel() + ", объем двигателя " + this.engineVolume + ", цвет  " + this.getColor()+ ", год выпуска: " + this.getYear() + ", страна производства: " + this.getCountry() + " коробка передач: " + this.transmission + "тип кузова: " + this.bodyType + "регистрационный номер: " + this.registrationNumber + "количество мест: " + this.numberOfSeats + "резина: " + type + "максимальная скорость: " + this.getMaxSpeed() );
     }
 }
 
