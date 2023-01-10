@@ -1,22 +1,40 @@
+import Driver.Driver;
+import Driver.DType;
+import Driver.CType;
+import Driver.BType;
+import Transport.Bus;
+import Transport.Car;
+import Transport.Truck;
 public class Main {
     public static void main(String[] args) {
-//        Car car1 = new Car("Lada",  "Granta", 1.7, "желтый", 2015, "Россия", "автомат", "хэтчбек", "A666МР", 4, false);
-//        Car car2 = new Car("Audi",  "A8 50 L TDI quattro", 3.0, null, 2020, "Германия", "автомат", "хэтчбек", "A126МР", 4, true);
-//        Car car3 = new Car("BMW",  "Z8", 2021, null, 2015, "Германия", "автомат", "хэтчбек", "A001МР", 4, false);
-//        Car car4 = new Car("Kia",  null, 2.4, "красный", 2018, "Южная Корея", "автомат", "хэтчбек", "A012МР", 4, true);
-//        Car car5 = new Car("Hyundai",  "Avante", 1.6, "оранжевый", 2016, "Южная Корея", "автомат", "пикап", "A777МР", 4, false);
-//        System.out.println(car1.toString());
-//        System.out.println(car2.toString());
-//        System.out.println(car3.toString());
-//        System.out.println(car4.toString());
-//        System.out.println(car5.toString());
-//        car5.changeTires(true);
-//        System.out.println(car5.getTires());
-        Bus bus1 = new Bus("marka", "model", 2020, "contry", "color", 130);
-        Bus bus2 = new Bus("marka2", "model2", 2022, "contry2", "color2", 150);
-        Bus bus3 = new Bus("", "model2", 2022, "contry2", "color2", 150);
-        System.out.println(bus1.toString());
-        System.out.println(bus2.toString());
-        System.out.println(bus3.toString());
+        Bus bus = new Bus("IKA", "RUS", 100);
+        Car car2 = new Car("Lada", "Vesta", 900);
+        Truck truck = new Truck("UAZ", "PATRIOT", 300);
+        Car car = new Car("LAMBO", "FERRA", 200);
+        System.out.println(truck.toString());
+        System.out.println(bus.toString());
+        System.out.println(car2.toString());
+        System.out.println(car.toString());
+        bus.pitStop();
+        car.pitStop();
+        truck.pitStop();
+        truck.maxSpeed(300);
+        bus.bestTime(19);
+        car.maxSpeed(200);
+        BType millie = new BType("Millie", false, 10);
+        millie.startMove(car);
+        millie.endMove(car);
+        millie.refuelCar();
+        millie.checkDriver(car);
+        CType willie = new CType("Willie", true, 100);
+        willie.startMove(bus);
+        willie.endMove(bus);
+        willie.refuelCar();
+        willie.checkDriver(bus);
+        DType dillie = new DType("Dillie", true, 20);
+        dillie.startMove(truck);
+        dillie.endMove(truck);
+        dillie.refuelCar();
+        dillie.checkDriver(truck);
     }
 }
