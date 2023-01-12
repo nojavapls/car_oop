@@ -1,10 +1,38 @@
 package Transport;
-import Driver.Driver;
 
 public class Truck extends Transport implements Competing{
-    public Truck(String brand, String model, int engineVolume) {
-        super(brand, model, engineVolume);
+
+    public enum LoadCapacity {
+        Small(0, 12.0),
+        Medium(3.5, 12.0),
+        Large(12.0, 0);
+        private double min;
+        private double max;
+
+        LoadCapacity(double min, double max) {
+            this.min = min;
+            this.max = max;
+        }
+
     }
+    private LoadCapacity loadCapacity;
+    public Truck(String brand, String model, int engineVolume, LoadCapacity loadCapacity) {
+        super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
+    }
+
+    public double getMin() {
+        return loadCapacity.min;
+    }
+    //
+    public double getMax() {
+        return loadCapacity.max;
+    }
+
+    public String getLoadCapacity() {
+        return loadCapacity.name();
+    }
+
 
     @Override
     public void pitStop() {
@@ -24,6 +52,18 @@ public class Truck extends Transport implements Competing{
 
     @Override
     public String toString() {
-        return super.toString();
+        String caps = "no data";
+        if (getMax() != 0 && getMin() == 0)
+            caps = "Грузоподъемность: до " + getMax();
+        if (getMax() == 0 && getMin() != 0)
+            caps = "Грузоподъемность: от " + getMin();
+        if (getMax() != 0 && getMin() != 0)
+            caps = "Грузоподъемность: от " + getMin() + " до " + getMax();
+       return this.getBrand() + " "+ this.getModel() + " " + getEngineVolume() +" " + caps;
+    }
+    public void printType() {
+        if (loadCapacity == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }else System.out.println(this.getBrand() + " "+ this.getModel() + " is " + getLoadCapacity());
     }
 }

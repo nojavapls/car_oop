@@ -2,16 +2,39 @@ package Transport;
 import Driver.Driver;
 public class Bus extends Transport implements Competing {
 
-    public Bus(String brand, String model, int engineVolume) {
-        super(brand, model, engineVolume);
+    public enum Capacity {
+        EXTRA_MINI(0, 10),
+        MINI(11, 25),
+        MEDIUM(40, 50),
+        LARGE(60, 80),
+        EXTRA_LARGE(100, 120);
+        private int min;
+        private int max;
+
+        Capacity(int min, int max) {
+            this.min = min;
+            this.max = max;
+        }
     }
 
+        public Bus(String brand, String model, int engineVolume, Capacity capacity) {
+            super(brand, model, engineVolume);
+            this.capacity = capacity;
+        }
+
+    private Capacity capacity;
     @Override
     public void pitStop() {
         System.out.println(getBrand() + " " + getModel() + " pit stopped.");
     }
 
-
+    public double getMin() {
+        return capacity.min;
+    }
+    //
+    public double getMax() {
+        return capacity.max;
+    }
     @Override
     public void maxSpeed(int speed) {
         System.out.println(this.getBrand() + " " + "max speed: " + speed);
@@ -22,8 +45,23 @@ public class Bus extends Transport implements Competing {
         System.out.println(this.getBrand() + " " + "best time: " + time);
     }
 
+    public String getCapacity() {
+        return capacity.name();
+    }
     @Override
     public String toString() {
-        return super.toString();
+        String caps = "no data";
+        if (getMax() != 0 && getMin() == 0)
+            caps = "Вместимость: до " + getMax() + " мест.";
+        if (getMax() == 0 && getMin() != 0)
+            caps = "Вместимость: от " + getMin() + " мест.";
+        if (getMax() != 0 && getMin() != 0)
+            caps = "Вместимость: от " + getMin() + " до " + getMax() + " мест.";
+        return this.getBrand() + " "+ this.getModel() + " " + getEngineVolume() +" " + caps;
+    }
+    public void printType() {
+        if (capacity == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }else System.out.println(this.getBrand() + " "+ this.getModel() + " is " + getCapacity() );
     }
 }

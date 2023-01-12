@@ -7,15 +7,16 @@ import Transport.Car;
 import Transport.Truck;
 public class Main {
     public static void main(String[] args) {
-        Bus bus = new Bus("IKA", "RUS", 100);
-        Car car2 = new Car("Lada", "Vesta", 900);
-        Truck truck = new Truck("UAZ", "PATRIOT", 300);
-        Car car = new Car("LAMBO", "FERRA", 200);
+        Bus bus = new Bus("IKA", "RUS", 100, Bus.Capacity.LARGE);
+        Car car2 = new Car("Lada", "Vesta", 900, Car.BodyType.CROSSOVER);
+        Truck truck = new Truck("UAZ", "PATRIOT", 300, Truck.LoadCapacity.Small);
+        Car car = new Car("LAMBO", "FERRA", 200, Car.BodyType.HATCHBACK);
         System.out.println(truck.toString());
         System.out.println(bus.toString());
         System.out.println(car2.toString());
         System.out.println(car.toString());
         bus.pitStop();
+        bus.printType();
         car.pitStop();
         truck.pitStop();
         truck.maxSpeed(300);

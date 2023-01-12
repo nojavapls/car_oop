@@ -63,5 +63,5 @@ public abstract class Transport implements Competing {
     public void bestTime(int time) {
         System.out.println(this.getBrand() + " " + "best time: " + time);
     }
-
+    public abstract void printType();
 }
