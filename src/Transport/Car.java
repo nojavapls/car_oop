@@ -1,5 +1,6 @@
 package Transport;
 import Driver.Driver;
+import Exceptions.DiagnosticsNotPassed;
 
 public class Car extends Transport implements Competing {
 
@@ -56,6 +57,11 @@ public class Car extends Transport implements Competing {
         if (bodyType == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         }else System.out.println(this.getBrand() + " "+ this.getModel() + " is " +getBodyType());
+    }
+
+    @Override
+    public void diagnostics() throws DiagnosticsNotPassed {
+        System.out.println(this.getBrand() + " "+ this.getModel() + " прошел диагностику.");
     }
 }
 

@@ -1,5 +1,7 @@
 package Transport;
 
+import Exceptions.DiagnosticsNotPassed;
+
 public class Truck extends Transport implements Competing{
 
     public enum LoadCapacity {
@@ -65,5 +67,9 @@ public class Truck extends Transport implements Competing{
         if (loadCapacity == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         }else System.out.println(this.getBrand() + " "+ this.getModel() + " is " + getLoadCapacity());
+    }
+
+    public void diagnostics() throws DiagnosticsNotPassed {
+        System.out.println(this.getBrand() + " "+ this.getModel() + " прошел диагностику.");
     }
 }

@@ -1,10 +1,11 @@
 package Driver;
+import Exceptions.LicenceIssue;
 import Transport.Car;
 import Transport.Transport;
 import Transport.Competing;
 public class BType extends Driver<Car>{
 
-    public BType(String driverName, boolean hasLicence, int yearsOfDriving) {
+    public BType(String driverName, String hasLicence, int yearsOfDriving) throws LicenceIssue {
         super(driverName, hasLicence, yearsOfDriving);
     }
 

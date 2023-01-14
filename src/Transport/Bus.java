@@ -1,5 +1,7 @@
 package Transport;
 import Driver.Driver;
+import Exceptions.DiagnosticsNotPassed;
+
 public class Bus extends Transport implements Competing {
 
     public enum Capacity {
@@ -64,4 +66,10 @@ public class Bus extends Transport implements Competing {
             System.out.println("Данных по транспортному средству недостаточно");
         }else System.out.println(this.getBrand() + " "+ this.getModel() + " is " + getCapacity() );
     }
+
+    @Override
+    public void diagnostics() throws DiagnosticsNotPassed {
+        throw new DiagnosticsNotPassed("Автобус: диагностика не требуется", this);
+    }
+
 }

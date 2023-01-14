@@ -1,5 +1,7 @@
 package Transport;
 
+import Exceptions.DiagnosticsNotPassed;
+
 public abstract class Transport implements Competing {
     private   String brand;
     private  String model;
@@ -64,4 +66,9 @@ public abstract class Transport implements Competing {
         System.out.println(this.getBrand() + " " + "best time: " + time);
     }
     public abstract void printType();
+
+    public void diagnostics() throws DiagnosticsNotPassed {
+        System.out.println(this.getBrand() + this.getBrand() + "прошел диагностику.");
+    }
+
 }
