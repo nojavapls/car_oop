@@ -67,8 +67,6 @@ public abstract class Transport implements Competing {
     }
     public abstract void printType();
 
-    public void diagnostics() throws DiagnosticsNotPassed {
-        System.out.println(this.getBrand() + this.getBrand() + "прошел диагностику.");
-    }
+    public abstract void diagnostics() throws DiagnosticsNotPassed;
 
 }

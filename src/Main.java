@@ -25,7 +25,7 @@ public class Main {
         bus.bestTime(19);
         car.diagnostics();
         car.maxSpeed(200);
-        BType millie = new BType("Millie", "P", 10);
+        BType millie = new BType("Millie", "B", 10);
         millie.startMove(car);
         millie.endMove(car);
         millie.refuelCar();
@@ -35,7 +35,7 @@ public class Main {
         willie.endMove(bus);
         willie.refuelCar();
 //        willie.checkDriver(bus);
-        DType dillie = new DType("Dillie", "D", 20);
+        DType dillie = new DType("Dillie", null, 20);
         dillie.startMove(truck);
         dillie.endMove(truck);
         dillie.refuelCar();

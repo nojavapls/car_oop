@@ -17,12 +17,17 @@ public abstract class Driver<T extends Transport & Competing>  implements Drivin
         } else {
             this.driverName = driverName;
         }
-        try {
-            if (hasLicence != null && !hasLicence.isEmpty() && !hasLicence.isBlank() && (hasLicence.contains("D") || hasLicence.contains("C") || hasLicence.contains("B") )) {
+//        try {
+//            if (hasLicence != null && !hasLicence.isEmpty() && !hasLicence.isBlank() && (hasLicence.contains("D") || hasLicence.contains("C") || hasLicence.contains("B") )) {
+//                this.hasLicence = hasLicence;
+//            }} catch (Exception e) {
+//            throw new LicenceIssue("Необходимо указать тип прав!");
+
+            if (hasLicence == null || hasLicence.isEmpty() || hasLicence.isBlank())
+                throw new LicenceIssue("Необходимо указать тип прав!");
+            else
                 this.hasLicence = hasLicence;
-            }} catch (Exception e) {
-            throw new LicenceIssue("Необходимо указать тип прав!");
-        }
+//        }
         if (yearsOfDriving < 0) {
             this.yearsOfDriving = Math.abs(yearsOfDriving);
         } else {
