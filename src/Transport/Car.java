@@ -1,6 +1,9 @@
 package Transport;
 import Driver.Driver;
 import Exceptions.DiagnosticsNotPassed;
+import Mechanic.Mechanic;
+
+import java.util.List;
 
 public class Car extends Transport implements Competing {
 
@@ -23,8 +26,8 @@ public class Car extends Transport implements Competing {
 
     }
     private BodyType bodyType;
-    public Car(String brand, String model, int engineVolume, BodyType bodyType) {
-        super(brand, model, engineVolume);
+    public Car(String brand, String model, int engineVolume, List<Mechanic> mechanics, Driver driver, BodyType bodyType) {
+        super(brand, model, engineVolume, mechanics ,driver);
         this.bodyType = bodyType;
     }
 

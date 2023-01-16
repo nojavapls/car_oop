@@ -1,17 +1,20 @@
 package Transport;
 
 import Exceptions.DiagnosticsNotPassed;
+import Mechanic.Mechanic;
+import Driver.Driver;
+
+import javax.sound.midi.Soundbank;
+import java.util.List;
 
 public abstract class Transport implements Competing {
     private   String brand;
     private  String model;
     private  int engineVolume;
-//    final private int year;
-//    final private String country;
-//    private String color;
-//    private int maxSpeed;
+    public List<Mechanic> mechanics;
+    private Driver driver;
 
-    public Transport(String brand, String model, int engineVolume){
+    public Transport(String brand, String model, int engineVolume, List<Mechanic> mechanics, Driver driver){
         if (brand == null || brand.length() == 0)
             this.brand = "default";
         else
@@ -24,6 +27,14 @@ public abstract class Transport implements Competing {
             this.engineVolume = 100;
         else
             this.engineVolume = engineVolume;
+        if (mechanics != null)
+            this.mechanics = mechanics;
+        else
+            System.out.println("У авто нет команды механиков");
+        if (driver != null)
+            this.driver = driver;
+        else
+            System.out.println("У авто нет водителя.");
     }
 
     public String getBrand(){
@@ -31,6 +42,10 @@ public abstract class Transport implements Competing {
     }
     public String getModel(){
         return this.model;
+    }
+
+    public Driver getDriver() {
+        return driver;
     }
 
     public int getEngineVolume(){
@@ -68,5 +83,18 @@ public abstract class Transport implements Competing {
     public abstract void printType();
 
     public abstract void diagnostics() throws DiagnosticsNotPassed;
+
+    public  void getMechanicsInfo() {
+        System.out.println("Список механиков автомобиля " + getBrand() + " " + getModel() + ":");
+        if (mechanics.size() != 0) {
+            for (int i = 0; i != mechanics.size(); i++) {
+                System.out.println(mechanics.get(i).getMechanicName());
+            }
+        }
+    }
+
+    public void getDriverInfo(){
+        System.out.println("Водитель авто " + getBrand()+ " " + getModel()+ ": " + driver.getDriverName());
+    }
 
 }

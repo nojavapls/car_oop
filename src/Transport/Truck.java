@@ -1,6 +1,10 @@
 package Transport;
 
+import Driver.Driver;
 import Exceptions.DiagnosticsNotPassed;
+import Mechanic.Mechanic;
+
+import java.util.List;
 
 public class Truck extends Transport implements Competing{
 
@@ -18,8 +22,8 @@ public class Truck extends Transport implements Competing{
 
     }
     private LoadCapacity loadCapacity;
-    public Truck(String brand, String model, int engineVolume, LoadCapacity loadCapacity) {
-        super(brand, model, engineVolume);
+    public Truck(String brand, String model, int engineVolume, List<Mechanic> mechanics, Driver driver, LoadCapacity loadCapacity) {
+        super(brand, model, engineVolume, mechanics, driver);
         this.loadCapacity = loadCapacity;
     }
 
