@@ -15,16 +15,22 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.HashMap;
+import java.util.Collections;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws DiagnosticsNotPassed, LicenceIssue {
 
+
+        //mechanics
         Mechanic dane = new Mechanic("Dane", "SMART AUTO");
         Mechanic chuck = new Mechanic("Chuck", "LIGHT");
         Mechanic stan = new Mechanic("Stan", "SPORT");
         Mechanic jack = new Mechanic("Jack", "ROSE");
         Mechanic kyle = new Mechanic("Kyle", "BLAST");
 
+        //lists of mechanics
         List<Mechanic> mechanicsTeam1 = new ArrayList<>();
 
         mechanicsTeam1.add(dane);
@@ -36,11 +42,12 @@ public class Main {
         mechanicsTeam2.add(jack);
         mechanicsTeam2.add(kyle);
 
+        //drivers
         BType millie = new BType("Millie", "B", 10);
         CType willie = new CType("Willie", "C", 100);
         DType dillie = new DType("Dillie", "D", 20);
 
-
+        //list of transport
         List<Transport> allTransport = new ArrayList<>();
 
         Bus bus = new Bus("IKA", "RUS", 100, mechanicsTeam1, willie, Bus.Capacity.LARGE);
@@ -108,5 +115,15 @@ public class Main {
         System.out.println(allTransport.size());
         System.out.println(queue.size());
         ServiceStation.getService(queue);
+
+        HashMap<Transport, Mechanic<?>> mapMechanics = new HashMap<>();
+        mapMechanics.put(bus, dane);
+        mapMechanics.put(car2, chuck);
+        mapMechanics.put(truck, stan);
+        mapMechanics.put(truck, jack);
+        mapMechanics.put(car, kyle);
+
+        System.out.println(Arrays.toString(mapMechanics.entrySet().toArray()));
+
     }
 }

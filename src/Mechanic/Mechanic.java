@@ -43,4 +43,9 @@ import Transport.Transport;
         {
             System.out.println("Механик "+getMechanicName() +" из компании " + getCompanyName() + " чинит автомобиль " + transport.getModel());
         }
+
+        @Override
+        public String toString() {
+            return mechanicName;
+        }
     }
