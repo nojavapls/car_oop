@@ -27,4 +27,8 @@ public void startMove(Transport transport) {
         System.out.println(getDriverName() + " refueling!");
     }
 
+//    @Override
+    public String toString() {
+     return ("Карточка водителя. Имя: " + getDriverName() + ", " + "стаж: " + getYearsOfDriving());
+}
 }

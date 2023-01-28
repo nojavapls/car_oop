@@ -4,6 +4,8 @@ import Exceptions.LicenceIssue;
 import Transport.Transport;
 import Transport.Competing;
 
+import java.util.Objects;
+
 import static Transport.Transport.*;
 
 public abstract class Driver<T extends Transport & Competing>  implements Driving {
@@ -72,5 +74,31 @@ public abstract class Driver<T extends Transport & Competing>  implements Drivin
 //        }
 //    }
 
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Driver other = (Driver) obj;
+        if (driverName == null) {
+            if (other.driverName != null)
+                return false;
+        } else if (!driverName.equals(other.driverName) || !hasLicence.equals(other.hasLicence) || yearsOfDriving != other.yearsOfDriving)
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driverName, hasLicence, yearsOfDriving);
+    }
+
+    public void toString(Driver driver) {
+        System.out.println(driverName + hasLicence + yearsOfDriving);
+    }
 }
 

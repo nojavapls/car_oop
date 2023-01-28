@@ -18,6 +18,9 @@ import java.util.Queue;
 import java.util.HashMap;
 import java.util.Collections;
 import java.util.Arrays;
+import java.util.Objects;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) throws DiagnosticsNotPassed, LicenceIssue {
@@ -116,7 +119,7 @@ public class Main {
         System.out.println(queue.size());
         ServiceStation.getService(queue);
 
-        HashMap<Transport, Mechanic<?>> mapMechanics = new HashMap<>();
+        HashMap<Transport, Mechanic> mapMechanics = new HashMap<>();
         mapMechanics.put(bus, dane);
         mapMechanics.put(car2, chuck);
         mapMechanics.put(truck, stan);
@@ -125,5 +128,19 @@ public class Main {
 
         System.out.println(Arrays.toString(mapMechanics.entrySet().toArray()));
 
+        //hashset
+        HashSet<Driver> driversSet = new HashSet<>(allDrivers);
+        driversSet.add(millie);
+        driversSet.add(new CType("Matt", "C", 5));
+        driversSet.add(new BType("Libbie", "B", 1));
+        driversSet.add(willie);
+        driversSet.remove(willie);
+
+        //iterator
+        Iterator<Driver> driverIterator = driversSet.iterator();
+        while (driverIterator.hasNext()) {
+            Driver next = driverIterator.next();
+            System.out.println(next);
+        }
     }
 }
